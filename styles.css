@@ -1,0 +1,420 @@
+/* ═══════════════════════════════════════════════════════════
+   MARKETSCOPE — STYLES.CSS
+   Dark-blue / turquoise design system
+   ═══════════════════════════════════════════════════════════ */
+
+
+/* ───────────────────────────────────────────────────────────
+   1. CSS CUSTOM PROPERTIES (Design Tokens)
+   ─────────────────────────────────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --color-bg:            #0d1b2a;   /* dark navy page background */
+  --color-surface:       #132337;   /* card / section surface */
+  --color-surface-hover: #1a2f47;   /* slightly lighter on hover */
+
+  /* Accent */
+  --color-accent:        #00c9b1;   /* turquoise primary accent */
+  --color-accent-muted:  #007d6e;   /* dimmer turquoise for borders */
+
+  /* Text */
+  --color-text-primary:  #e8f0fe;   /* near-white body text */
+  --color-text-secondary:#8ba3bf;   /* muted blue-grey label text */
+
+  /* Semantic */
+  --color-positive:      #34d399;   /* green for positive growth */
+  --color-negative:      #f87171;   /* red for negative growth */
+  --color-error-bg:      #3b1212;   /* dark red error banner background */
+  --color-error-border:  #ef4444;   /* bright red error border */
+
+  /* Typography */
+  --font-main: -apple-system, "Segoe UI", system-ui, sans-serif;
+
+  /* Spacing */
+  --page-padding: 1.5rem;
+  --card-radius:  0.5rem;
+  --gap:          1.25rem;
+}
+
+
+/* ───────────────────────────────────────────────────────────
+   2. GLOBAL RESET
+   ─────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+
+/* ───────────────────────────────────────────────────────────
+   3. UTILITY
+   ─────────────────────────────────────────────────────────── */
+.hidden {
+  display: none !important;
+}
+
+
+/* ───────────────────────────────────────────────────────────
+   4. HEADER
+   ─────────────────────────────────────────────────────────── */
+header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-accent-muted);
+  padding: 1.25rem var(--page-padding);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.app-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.03em;
+}
+
+.app-tagline {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+
+/* ───────────────────────────────────────────────────────────
+   5. LOADING STATE
+   ─────────────────────────────────────────────────────────── */
+#loadingMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 4rem var(--page-padding);
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+.spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 3px solid var(--color-accent-muted);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ───────────────────────────────────────────────────────────
+   6. ERROR BANNER
+   ─────────────────────────────────────────────────────────── */
+#errorMessage {
+  background-color: var(--color-error-bg);
+  border: 1px solid var(--color-error-border);
+  border-radius: var(--card-radius);
+  color: var(--color-negative);
+  margin: var(--page-padding);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+}
+
+
+/* ───────────────────────────────────────────────────────────
+   7. MAIN CONTENT WRAPPER
+   ─────────────────────────────────────────────────────────── */
+#mainContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--page-padding);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap) * 1.5);
+}
+
+/* Override .hidden for mainContent — use block display when visible */
+#mainContent:not(.hidden) {
+  display: flex;
+}
+
+
+/* ───────────────────────────────────────────────────────────
+   8. CONTROLS BAR
+   ─────────────────────────────────────────────────────────── */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  align-items: flex-end;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.control-group label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.control-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-accent-muted);
+  border-radius: var(--card-radius);
+  padding: 0.55rem 2.25rem 0.55rem 0.85rem;
+  font-family: var(--font-main);
+  font-size: 0.925rem;
+  cursor: pointer;
+  min-width: 200px;
+  /* custom dropdown arrow */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300c9b1' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  transition: border-color 0.2s;
+}
+
+.control-group select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(0, 201, 177, 0.2);
+}
+
+.control-group select:hover {
+  border-color: var(--color-accent);
+}
+
+
+/* ───────────────────────────────────────────────────────────
+   9. COMPANY HEADING
+   ─────────────────────────────────────────────────────────── */
+#companyHeading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.company-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.company-date-range {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+
+/* ───────────────────────────────────────────────────────────
+   10. SUMMARY CARDS
+   ─────────────────────────────────────────────────────────── */
+#summaryCards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+}
+
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-accent-muted);
+  border-top: 3px solid var(--color-accent);
+  border-radius: var(--card-radius);
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.card:hover {
+  background-color: var(--color-surface-hover);
+}
+
+.card-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.card-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  transition: color 0.2s;
+}
+
+/* Growth card colour modifiers — applied by JS */
+.card-value.positive  { color: var(--color-positive); }
+.card-value.negative  { color: var(--color-negative); }
+
+/* Metric tile colour modifiers — applied by JS for percent fmt only */
+.metric-value.positive { color: var(--color-positive); }
+.metric-value.negative { color: var(--color-negative); }
+
+
+/* ───────────────────────────────────────────────────────────
+   11. METRIC SECTIONS
+   ─────────────────────────────────────────────────────────── */
+.metric-section {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-accent-muted);
+  border-radius: var(--card-radius);
+  padding: 1.25rem;
+}
+
+.section-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  padding-bottom: 0.6rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--color-accent-muted);
+  letter-spacing: 0.04em;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metric-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.metric-value {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+
+/* ───────────────────────────────────────────────────────────
+   12. FOOTER
+   ─────────────────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--color-accent-muted);
+  padding: 1rem var(--page-padding);
+  text-align: center;
+}
+
+#pageFooter {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Tablet: 768px ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --page-padding: 1rem;
+    --gap: 1rem;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  /* Summary cards: 2 columns */
+  #summaryCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Metric grid: tighter minimum */
+  .metric-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+}
+
+/* ── Mobile: 480px ───────────────────────────────────────── */
+@media (max-width: 480px) {
+  :root {
+    --page-padding: 0.75rem;
+    --gap: 0.75rem;
+  }
+
+  .app-title {
+    font-size: 1.4rem;
+  }
+
+  /* Controls stack vertically */
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .control-group select {
+    min-width: unset;
+    width: 100%;
+  }
+
+  /* Summary cards: single column */
+  #summaryCards {
+    grid-template-columns: 1fr;
+  }
+
+  .card-value {
+    font-size: 1.5rem;
+  }
+
+  /* Metric grid: single column */
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+}

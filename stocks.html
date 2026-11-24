@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MarketScope — All Stocks</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="stocks.css" />
+  </head>
+  <body>
+
+    <!-- ═══════════════════════════════════════════════
+         HEADER
+    ═══════════════════════════════════════════════ -->
+    <header>
+      <div class="header-inner">
+        <h1 class="app-title">MarketScope</h1>
+        <p class="app-tagline">U.S. Stock Market Overview</p>
+      </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════
+         LOADING STATE (shown by JS on fetch start,
+         hidden on success or error)
+    ═══════════════════════════════════════════════ -->
+    <div id="stocksLoading">
+      <div class="spinner"></div>
+      <p>Loading stocks&hellip;</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         ERROR STATE (shown by JS when fetch fails,
+         hidden by default)
+    ═══════════════════════════════════════════════ -->
+    <div id="stocksError" class="hidden">
+      <p id="stocksErrorText">Unable to load stock data. Please try again.</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         MAIN CONTENT
+         Hidden until stocks.js fetches data successfully.
+         JS injects: toolbar, table, pagination, summary.
+    ═══════════════════════════════════════════════ -->
+    <main id="stocksApp" class="hidden">
+
+      <!-- ── Toolbar: search + sector filter + Date Range ──────── -->
+      <div class="stocks-toolbar" id="stocksToolbar">
+        <!-- Populated by stocks.js (Phase 4) -->
+      </div>
+
+      <!-- Date Range status: demo data does not change until the backend is connected. -->
+      <p id="rangeNotice" class="range-notice" role="status" aria-live="polite"></p>
+
+      <!-- ── Results summary label ─────────────────── -->
+      <div class="stocks-summary" id="stocksSummary" aria-live="polite">
+        <!-- e.g. "Showing 1–20 of 40 stocks" — injected by stocks.js -->
+      </div>
+
+      <!-- ── Table scroll wrapper + table ──────────── -->
+      <div class="table-scroll-wrapper" id="tableWrapper" role="region" aria-label="Stock data table — scroll horizontally" tabindex="0">
+        <!-- Populated by stocks.js (Phase 3) -->
+      </div>
+
+      <!-- ── Pagination controls ───────────────────── -->
+      <div class="pagination" id="paginationBar" aria-label="Pagination">
+        <!-- Populated by stocks.js (Phase 6) -->
+      </div>
+
+    </main>
+
+    <!-- ═══════════════════════════════════════════════
+         FOOTER — disclaimer injected by stocks.js
+    ═══════════════════════════════════════════════ -->
+    <footer>
+      <p id="pageFooter"></p>
+    </footer>
+
+    <script src="stocks.js" defer></script>
+  </body>
+</html>
