@@ -5,6 +5,8 @@
 The current version is a **frontend demonstration** built with HTML, CSS, and JavaScript. It displays a static dataset of 40 U.S. stocks. No account, database, or paid market-data service is required to try it.
 
 **Live demo:** https://arsal187-gmail.github.io/MarketScope/  
+The live demo opens directly to the stock table.
+
 **Source code:** https://github.com/arsal187-Gmail/MarketScope
 
 ## Features
